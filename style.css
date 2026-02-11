@@ -1286,23 +1286,109 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 650px) {
+  .header h1 {
+    font-size: 24px;
+  }
+  
+  .header p {
+    font-size: 1.4rem;
+  }
+
+  /* ROUTE - mantieni orizzontale anche su mobile */
   .route {
-    flex-direction: column;
-    gap: 4px;
+    display: flex;
+    flex-direction: row; /* Forza orizzontale */
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px 8px 0;
     z-index: 200;
   }
+
+  .route-label {
+    flex-shrink: 0;
+    font-size: 1.1rem;
+    min-width: 60px;
+  }
+
+  .flag {
+    font-size: 2rem;
+  }
+
   .route-track {
-    width: 100%;
+    flex: 1;
+    min-width: 120px;
+    height: 35px;
   }
+
+  /* Rose packets più piccoli su mobile */
+  .rose-packet {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Scene e fiori ottimizzati */
   .scene {
-    min-height: 380px;
-    max-height: 450px;
+    min-height: 320px;
+    max-height: 400px;
+    margin-top: 20px;
   }
+
   .flowers {
-    transform: scale(0.7);
-    margin-bottom: -100px;
+    transform: scale(0.65);
+    margin-bottom: -80px;
   }
+
   .flower {
-    bottom: -18vmin;
+    bottom: -15vmin;
+  }
+
+  .flower--1 .flower__line {
+    height: 90vmin;
+  }
+
+  .flower--2 .flower__line {
+    height: 80vmin;
+  }
+
+  .flower--3 .flower__line {
+    height: 75vmin;
+  }
+
+  .caption p {
+    font-size: 1.4rem;
+    padding: 0 10px;
+  }
+}
+
+/* Extra piccoli (< 400px) */
+@media (max-width: 400px) {
+  .route {
+    gap: 5px;
+    padding: 12px 5px 0;
+  }
+
+  .route-label {
+    font-size: 1rem;
+    min-width: 50px;
+  }
+
+  .flag {
+    font-size: 1.8rem;
+  }
+
+  .route-track {
+    min-width: 100px;
+    height: 30px;
+  }
+
+  .rose-packet {
+    width: 15px;
+    height: 15px;
+  }
+
+  .flowers {
+    transform: scale(0.55);
+    margin-bottom: -60px;
   }
 }
