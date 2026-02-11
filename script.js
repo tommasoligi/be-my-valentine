@@ -6,6 +6,7 @@ const yesButton = document.querySelector(".btn--yes");
 const noButton = document.querySelector(".btn--no");
 const catImg = document.querySelector(".cat-img");
 
+// DEVONO coincidere con gli id nell'HTML
 const valentinePage = document.getElementById("valentinePage");
 const rosesPage = document.getElementById("rosesPage");
 const bouquetWrapper = document.getElementById("bouquetWrapper");
@@ -16,19 +17,21 @@ const MAX_IMAGES = 5;
 let play = true;
 let noCount = 0;
 
+// Collega gli eventi solo se i bottoni esistono
 if (yesButton && noButton) {
   yesButton.addEventListener("click", handleYesClick);
 
   noButton.addEventListener("click", function () {
-    if (play) {
-      noCount++;
-      const imageIndex = Math.min(noCount, MAX_IMAGES);
-      changeImage(imageIndex);
-      resizeYesButton();
-      updateNoButtonText();
-      if (noCount === MAX_IMAGES) {
-        play = false;
-      }
+    if (!play) return;
+
+    noCount++;
+    const imageIndex = Math.min(noCount, MAX_IMAGES);
+    changeImage(imageIndex);
+    resizeYesButton();
+    updateNoButtonText();
+
+    if (noCount === MAX_IMAGES) {
+      play = false;
     }
   });
 }
@@ -36,23 +39,29 @@ if (yesButton && noButton) {
 function handleYesClick() {
   if (!buttonsContainer || !titleElement || !valentinePage || !rosesPage) return;
 
+  // nasconde i bottoni, cambia testo
   buttonsContainer.classList.add("hidden");
   titleElement.innerHTML = "Preparando il tuo regalo speciale...";
 
+  // piccola attesa prima di cambiare pagina
   setTimeout(() => {
     valentinePage.classList.add("hidden");
     rosesPage.classList.remove("hidden");
 
+    // appena appare la pagina rose, facciamo ripartire i pacchetti
     setTimeout(() => {
       restartPackets();
+
+      // dopo il viaggio dei pacchetti, compare il bouquet
       setTimeout(() => {
         showBouquet();
-      }, 7300);
-    }, 500);
-  }, 2500);
+      }, 7300); // tempo per far finire le animazioni dei pacchetti
+    }, 300);
+  }, 2000);
 }
 
 function resizeYesButton() {
+  if (!yesButton) return;
   const computedStyle = window.getComputedStyle(yesButton);
   const fontSize = parseFloat(computedStyle.getPropertyValue("font-size"));
   const newFontSize = fontSize * 1.6;
@@ -87,7 +96,8 @@ const packets = document.querySelectorAll(".rose-packet");
 function restartPackets() {
   packets.forEach((p) => {
     p.style.animation = "none";
-    void p.offsetHeight; // forza reflow per riavviare l’animazione
+    // forza reflow per riavviare l’animazione
+    void p.offsetHeight;
     p.style.animation = "";
   });
 }
