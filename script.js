@@ -67,7 +67,7 @@ function generateMessage(noCount) {
   const messages = [
     "No",
     "¿Estás segura?",
-    "Pookie, por favor",
+    "Dale, por favor",
     "No me hagas esto :(",
     "Me estás rompiendo el corazón",
     "Voy a llorar...",
@@ -102,6 +102,6 @@ function showFlowers() {
     flowers.classList.remove("flowers-paused");
   }
   if (captionText) {
-    captionText.textContent = "¡Entregado! Las flores han crecido para ti ❤️";
+    captionText.textContent = "Entregado! Las rosas han llegado ❤️";
   }
 }
