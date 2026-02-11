@@ -32,19 +32,28 @@ noButton.addEventListener("click", function () {
 });
 
 function handleYesClick() {
-  titleElement.innerHTML = "Yayyy!! :3";
+  // Nascondi bottoni e mostra loading
   buttonsContainer.classList.add("hidden");
-  changeImage("yes");
+  titleElement.innerHTML = "Preparando il tuo regalo speciale...";
+  titleElement.classList.add("loading-title");
   
-  // DOPO 2 secondi, avvia le rose
+  // Barra di caricamento
+  const loadingBar = document.createElement("div");
+  loadingBar.className = "loading-bar";
+  loadingBar.innerHTML = `
+    <div class="loading-progress"></div>
+  `;
+  valentineContainer.appendChild(loadingBar);
+  
+  // Avvia animazione loading
   setTimeout(() => {
     showRoses();
-  }, 2000);
+  }, 2500);
 }
 
 function showRoses() {
   valentineContainer.style.opacity = "0";
-  valentineContainer.style.transition = "opacity 1s";
+  valentineContainer.style.transition = "opacity 0.8s";
   rosesContainer.style.opacity = "1";
   rosesContainer.style.display = "block";
 }
@@ -101,4 +110,4 @@ function restartPackets() {
 setTimeout(() => {
   restartPackets();
   setTimeout(showBouquet, TOTAL_SEND_MS);
-}, 3000);
+}, 3500);
