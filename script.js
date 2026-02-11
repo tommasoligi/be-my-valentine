@@ -6,6 +6,11 @@ const yesButton = document.querySelector(".btn--yes");
 const noButton = document.querySelector(".btn--no");
 const catImg = document.querySelector(".cat-img");
 
+const valentineContainer = document.getElementById("valentineContainer");
+const rosesContainer = document.getElementById("rosesContainer");
+const bouquetWrapper = document.getElementById("bouquetWrapper");
+const captionText = document.getElementById("captionText");
+
 const MAX_IMAGES = 5;
 
 let play = true;
@@ -30,13 +35,24 @@ function handleYesClick() {
   titleElement.innerHTML = "Yayyy!! :3";
   buttonsContainer.classList.add("hidden");
   changeImage("yes");
+  
+  // DOPO 2 secondi, avvia le rose
+  setTimeout(() => {
+    showRoses();
+  }, 2000);
+}
+
+function showRoses() {
+  valentineContainer.style.opacity = "0";
+  valentineContainer.style.transition = "opacity 1s";
+  rosesContainer.style.opacity = "1";
+  rosesContainer.style.display = "block";
 }
 
 function resizeYesButton() {
   const computedStyle = window.getComputedStyle(yesButton);
   const fontSize = parseFloat(computedStyle.getPropertyValue("font-size"));
   const newFontSize = fontSize * 1.6;
-
   yesButton.style.fontSize = `${newFontSize}px`;
 }
 
@@ -49,7 +65,6 @@ function generateMessage(noCount) {
     "You're breaking my heart",
     "I'm gonna cry...",
   ];
-
   const messageIndex = Math.min(noCount, messages.length - 1);
   return messages[messageIndex];
 }
@@ -61,3 +76,29 @@ function changeImage(image) {
 function updateNoButtonText() {
   noButton.innerHTML = generateMessage(noCount);
 }
+
+// ROSA LOGIC
+const TOTAL_SEND_MS = 5000 + 1800 + 500;
+const packets = document.querySelectorAll(".rose-packet");
+
+function showBouquet() {
+  if (!bouquetWrapper) return;
+  bouquetWrapper.classList.add("bouquet-visible");
+  if (captionText) {
+    captionText.textContent = "Consegnato: il tuo bouquet è arrivato a Buenos Aires. Ti amo ❤️";
+  }
+}
+
+function restartPackets() {
+  packets.forEach(p => {
+    p.style.animation = "none";
+    void p.offsetWidth;
+    p.style.animation = "";
+  });
+}
+
+// Avvia animazione rose dopo che il container è visibile
+setTimeout(() => {
+  restartPackets();
+  setTimeout(showBouquet, TOTAL_SEND_MS);
+}, 3000);
