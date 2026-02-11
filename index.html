@@ -13,13 +13,73 @@
     <title>Valentine</title>
   </head>
   <body>
-    <main class="container">
+    <!-- Sezione iniziale "Will you be my Valentine?" -->
+    <main class="container" id="valentineContainer">
       <img class="cat-img" src="img/cat-0.jpg" alt="Picture of a cat" />
       <p class="title">Will you be my Valentine?</p>
       <div class="buttons">
         <button type="button" class="btn btn--yes">Yes</button>
         <button type="button" class="btn btn--no">No</button>
       </div>
+    </main>
+
+    <!-- Sezione rose (nascosta inizialmente) -->
+    <main class="container roses-container" id="rosesContainer">
+      <div class="sky">
+        <div class="stars"></div>
+        <div class="gradient"></div>
+      </div>
+
+      <header class="header">
+        <h1>Rose a Distanza</h1>
+        <p>Rose digitali che viaggiano dall'Italia a Buenos Aires per te ❤️</p>
+      </header>
+
+      <section class="route">
+        <div class="route-label route-label--left">
+          <span class="flag">🇮🇹</span>
+          <span>Italia</span>
+        </div>
+
+        <div class="route-track">
+          <div class="rose-packet rose-packet--1"></div>
+          <div class="rose-packet rose-packet--2"></div>
+          <div class="rose-packet rose-packet--3"></div>
+          <div class="rose-packet rose-packet--4"></div>
+        </div>
+
+        <div class="route-label route-label--right">
+          <span class="flag">🇦🇷</span>
+          <span>Buenos Aires</span>
+        </div>
+      </section>
+
+      <section class="scene">
+        <div class="bouquet-wrapper" id="bouquetWrapper">
+          <div class="bouquet-shadow"></div>
+          <div class="bouquet bouquet--clean">
+            <div class="stem"></div>
+            <div class="leaf leaf-left"></div>
+            <div class="leaf leaf-right"></div>
+
+            <div class="flower flower--left"></div>
+            <div class="flower flower--center"></div>
+            <div class="flower flower--right"></div>
+
+            <div class="wrap">
+              <div class="wrap-left"></div>
+              <div class="wrap-right"></div>
+              <div class="ribbon"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="caption">
+        <p id="captionText">
+          Invio in corso: le rose stanno attraversando l'oceano digitale…
+        </p>
+      </section>
     </main>
 
     <script type="module" src="script.js"></script>
