@@ -123,6 +123,8 @@ body {
 .header {
   text-align: center;
   padding: 28px 16px 14px;
+  position: relative;
+  z-index: 200;
 }
 
 .header h1 {
@@ -137,7 +139,7 @@ body {
   font-size: 1.8rem;
 }
 
-/* ROUTE */
+/* ROUTE - DEVE STARE SOPRA */
 .route {
   display: flex;
   align-items: center;
@@ -145,6 +147,8 @@ body {
   gap: 10px;
   padding: 12px 16px 0;
   width: 100%;
+  position: relative;
+  z-index: 200;
 }
 
 .route-label {
@@ -216,20 +220,23 @@ body {
   100% { left: 120%; opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
 }
 
-/* SCENE */
+/* SCENE - limitata in altezza */
 .scene {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  min-height: 340px;
-  margin-top: 24px;
+  min-height: 480px;
+  max-height: 550px;
+  margin-top: 30px;
+  overflow: hidden;
 }
 
-/* FIORI ANIMATI */
+/* FIORI ANIMATI - posizionamento più basso */
 .flowers {
   position: relative;
   transform: scale(0.9);
+  margin-bottom: -120px;
 }
 
 /* Quando flowers-paused, ferma tutte le animazioni */
@@ -239,7 +246,7 @@ body {
 
 .flower {
   position: absolute;
-  bottom: 10vmin;
+  bottom: -20vmin;
   transform-origin: bottom center;
   z-index: 10;
   --fl-speed: 0.8s;
@@ -249,7 +256,7 @@ body {
   animation: moving-flower-1 4s linear infinite;
 }
 .flower--1 .flower__line {
-  height: 70vmin;
+  height: 100vmin;
   animation-delay: 0.3s;
 }
 .flower--1 .flower__line__leaf--1 {
@@ -277,7 +284,7 @@ body {
   animation: moving-flower-2 4s linear infinite;
 }
 .flower--2 .flower__line {
-  height: 60vmin;
+  height: 90vmin;
   animation-delay: 0.6s;
 }
 .flower--2 .flower__line__leaf--1 {
@@ -299,6 +306,7 @@ body {
   animation: moving-flower-3 4s linear infinite;
 }
 .flower--3 .flower__line {
+  height: 85vmin;
   animation-delay: 0.9s;
 }
 .flower--3 .flower__line__leaf--1 {
@@ -431,57 +439,12 @@ body {
 
 /* GAMBO (stem) VERDE */
 .flower__line {
-  height: 55vmin;
+  height: 85vmin;
   width: 1.5vmin;
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.2)),
     linear-gradient(to top, transparent 10%, #064600, #064600);
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
   animation: grow-flower-tree 4s backwards;
-}
-
-.flower__line__leaf {
-  --w: 7vmin;
-  --h: calc(var(--w) + 2vmin);
-  position: absolute;
-  top: 20%;
-  left: 90%;
-  width: var(--w);
-  height: var(--h);
-  border-top-right-radius: var(--h);
-  border-bottom-left-radius: var(--h);
-  background-image: linear-gradient(to top, rgba(20, 122, 20, 0.4), #1aaa15);
-}
-.flower__line__leaf--1 {
-  transform: rotate(70deg) rotateY(30deg);
-}
-.flower__line__leaf--2 {
-  top: 45%;
-  transform: rotate(70deg) rotateY(30deg);
-}
-.flower__line__leaf--3,
-.flower__line__leaf--4,
-.flower__line__leaf--6 {
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: var(--h);
-  border-bottom-right-radius: var(--h);
-  left: -460%;
-  top: 12%;
-  transform: rotate(-70deg) rotateY(30deg);
-}
-.flower__line__leaf--4 {
-  top: 40%;
-}
-.flower__line__leaf--5 {
-  top: 0;
-  transform-origin: left;
-  transform: rotate(70deg) rotateY(30deg) scale(0.6);
-}
-.flower__line__leaf--6 {
-  top: -2%;
-  left: -450%;
-  transform-origin: right;
-  transform: rotate(-70deg) rotateY(30deg) scale(0.6);
 }
 
 /* FOGLIE SUL GAMBO (verdi) */
@@ -578,12 +541,11 @@ body {
   animation-delay: 3.5s;
 }
 
-
 .flower__grass {
   --c: #00b815;
   --line-w: 1.5vmin;
   position: absolute;
-  bottom: 12vmin;
+  bottom: 2vmin;
   left: -7vmin;
   display: flex;
   flex-direction: column;
@@ -597,7 +559,7 @@ body {
 }
 .flower__grass--2 {
   left: 2vmin;
-  bottom: 10vmin;
+  bottom: 0vmin;
   transform: scale(0.5) rotate(75deg) rotateX(10deg) rotateY(-200deg);
   opacity: 0.8;
   z-index: 0;
@@ -747,7 +709,7 @@ body {
   --h: 6vmin;
   --c: #1aaa15;
   position: absolute;
-  bottom: 10vmin;
+  bottom: 0vmin;
   left: -3vmin;
   transform-origin: bottom center;
   transform: rotate(-30deg) rotateY(-20deg);
@@ -784,7 +746,7 @@ body {
 
 .flower__g-right {
   position: absolute;
-  bottom: 6vmin;
+  bottom: -4vmin;
   left: -2vmin;
   transform-origin: bottom left;
   transform: rotate(20deg);
@@ -831,7 +793,7 @@ body {
 
 .flower__g-front {
   position: absolute;
-  bottom: 6vmin;
+  bottom: -4vmin;
   left: 2.5vmin;
   z-index: 100;
   transform-origin: bottom center;
@@ -941,7 +903,7 @@ body {
 
 .flower__g-fr {
   position: absolute;
-  bottom: -4vmin;
+  bottom: -12vmin;
   left: vmin;
   transform-origin: bottom left;
   z-index: 10;
@@ -1057,12 +1019,12 @@ body {
 
 .long-g {
   position: absolute;
-  bottom: 25vmin;
+  bottom: 15vmin;
   left: -42vmin;
   transform-origin: bottom left;
 }
 .long-g--1 {
-  bottom: 0vmin;
+  bottom: -8vmin;
   transform: scale(0.8) rotate(-5deg);
 }
 .long-g--1 .leaf {
@@ -1076,7 +1038,7 @@ body {
 }
 .long-g--2,
 .long-g--3 {
-  bottom: -3vmin;
+  bottom: -12vmin;
   left: -35vmin;
   transform-origin: center;
   transform: scale(0.6) rotateX(60deg);
@@ -1092,14 +1054,14 @@ body {
 }
 .long-g--3 {
   left: -17vmin;
-  bottom: 0vmin;
+  bottom: -8vmin;
 }
 .long-g--3 .leaf {
   -webkit-mask-image: linear-gradient(to top, transparent 40%, #00b815 80%) !important;
 }
 .long-g--4 {
   left: 25vmin;
-  bottom: -3vmin;
+  bottom: -12vmin;
   transform-origin: center;
   transform: scale(0.6) rotateX(60deg);
 }
@@ -1108,19 +1070,19 @@ body {
 }
 .long-g--5 {
   left: 42vmin;
-  bottom: 0vmin;
+  bottom: -8vmin;
   transform: scale(0.8) rotate(2deg);
 }
 .long-g--6 {
   left: 0vmin;
-  bottom: -20vmin;
+  bottom: -28vmin;
   z-index: 100;
   filter: blur(0.3vmin);
   transform: scale(0.8) rotate(2deg);
 }
 .long-g--7 {
   left: 35vmin;
-  bottom: 20vmin;
+  bottom: 10vmin;
   z-index: -1;
   filter: blur(0.3vmin);
   transform: scale(0.6) rotate(2deg);
@@ -1311,6 +1273,8 @@ body {
 .caption {
   margin-top: 26px;
   text-align: center;
+  position: relative;
+  z-index: 200;
 }
 
 .caption p {
@@ -1325,8 +1289,20 @@ body {
   .route {
     flex-direction: column;
     gap: 4px;
+    z-index: 200;
   }
   .route-track {
     width: 100%;
+  }
+  .scene {
+    min-height: 380px;
+    max-height: 450px;
+  }
+  .flowers {
+    transform: scale(0.7);
+    margin-bottom: -100px;
+  }
+  .flower {
+    bottom: -18vmin;
   }
 }
