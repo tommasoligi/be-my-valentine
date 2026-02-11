@@ -39,20 +39,20 @@ if (yesButton && noButton) {
 function handleYesClick() {
   if (!buttonsContainer || !titleElement || !valentinePage || !rosesPage) return;
 
-  // nasconde i bottoni, cambia testo
+  // Nasconde i bottoni, cambia testo (in spagnolo)
   buttonsContainer.classList.add("hidden");
-  titleElement.innerHTML = "Preparando il tuo regalo speciale...";
+  titleElement.innerHTML = "Preparando tu regalo especial...";
 
-  // piccola attesa prima di cambiare pagina
+  // Piccola attesa prima di cambiare pagina
   setTimeout(() => {
     valentinePage.classList.add("hidden");
     rosesPage.classList.remove("hidden");
 
-    // appena appare la pagina rose, facciamo ripartire i pacchetti
+    // Appena appare la pagina rose, facciamo ripartire i pacchetti
     setTimeout(() => {
       restartPackets();
 
-      // dopo il viaggio dei pacchetti, compare il bouquet
+      // Dopo il “viaggio” dei pacchetti, compare il bouquet
       setTimeout(() => {
         showBouquet();
       }, 7300); // tempo per far finire le animazioni dei pacchetti
@@ -71,11 +71,11 @@ function resizeYesButton() {
 function generateMessage(noCount) {
   const messages = [
     "No",
-    "Are you sure?",
-    "Pookie please",
-    "Don't do this to me :(",
-    "You're breaking my heart",
-    "I'm gonna cry...",
+    "¿Estás segura?",
+    "Pookie, por favor",
+    "No me hagas esto :(",
+    "Me estás rompiendo el corazón",
+    "Voy a llorar...",
   ];
   const messageIndex = Math.min(noCount, messages.length - 1);
   return messages[messageIndex];
@@ -108,6 +108,6 @@ function showBouquet() {
   }
   if (captionText) {
     captionText.textContent =
-      "Consegnato: il tuo bouquet è arrivato! Ti amo ❤️";
+      "Entregado: ¡tu ramo ha llegado! Te amo ❤️";
   }
 }
