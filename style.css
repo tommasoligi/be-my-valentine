@@ -1297,7 +1297,7 @@ body {
   /* ROUTE - mantieni orizzontale anche su mobile */
   .route {
     display: flex;
-    flex-direction: row; /* Forza orizzontale */
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
@@ -1327,32 +1327,38 @@ body {
     height: 18px;
   }
 
-  /* Scene e fiori ottimizzati */
+  /* Scene e fiori ottimizzati - PIÙ ALTE */
   .scene {
-    min-height: 320px;
-    max-height: 400px;
+    min-height: 450px;
+    max-height: 550px;
     margin-top: 20px;
   }
 
   .flowers {
-    transform: scale(0.65);
-    margin-bottom: -80px;
+    transform: scale(0.8); /* Da 0.65 a 0.8 - più grandi */
+    margin-bottom: -100px;
   }
 
   .flower {
-    bottom: -15vmin;
+    bottom: -25vmin; /* Più in basso per farle crescere di più */
   }
 
+  /* GAMBI PIÙ LUNGHI SU MOBILE */
   .flower--1 .flower__line {
-    height: 90vmin;
+    height: 120vmin; /* Era 90vmin */
   }
 
   .flower--2 .flower__line {
-    height: 80vmin;
+    height: 110vmin; /* Era 80vmin */
   }
 
   .flower--3 .flower__line {
-    height: 75vmin;
+    height: 105vmin; /* Era 75vmin */
+  }
+
+  /* Gambo base più lungo */
+  .flower__line {
+    height: 105vmin;
   }
 
   .caption p {
@@ -1387,8 +1393,30 @@ body {
     height: 15px;
   }
 
+  .scene {
+    min-height: 420px;
+    max-height: 520px;
+  }
+
   .flowers {
-    transform: scale(0.55);
-    margin-bottom: -60px;
+    transform: scale(0.7); /* Da 0.55 a 0.7 */
+    margin-bottom: -80px;
+  }
+
+  .flower {
+    bottom: -22vmin;
+  }
+
+  /* GAMBI ANCORA PIÙ LUNGHI per schermi piccoli */
+  .flower--1 .flower__line {
+    height: 130vmin;
+  }
+
+  .flower--2 .flower__line {
+    height: 120vmin;
+  }
+
+  .flower--3 .flower__line {
+    height: 115vmin;
   }
 }
